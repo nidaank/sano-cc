@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Prediction</title>
+</head>
+<body>
+    <h1>Stroke Risk Prediction</h1>
+    <form action="/predict_stroke" method="post">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age"><br>
+        <label for="avg_glucose_level">Average Glucose Level:</label>
+        <input type="text" id="avg_glucose_level" name="avg_glucose_level"><br>
+        <label for="bmi">BMI:</label>
+        <input type="text" id="bmi" name="bmi"><br>
+        
+        <label>Hypertension:</label>
+        <input type="radio" id="hypertension_no" name="hypertension" value="No">
+        <label for="hypertension_no">No</label>
+        <input type="radio" id="hypertension_yes" name="hypertension" value="Yes">
+        <label for="hypertension_yes">Yes</label><br>
+        
+        <label>Heart Disease:</label>
+        <input type="radio" id="heart_disease_no" name="heart_disease" value="No">
+        <label for="heart_disease_no">No</label>
+        <input type="radio" id="heart_disease_yes" name="heart_disease" value="Yes">
+        <label for="heart_disease_yes">Yes</label><br>
+        
+        <label for="smoking_status">Smoking Status:</label>
+        <select id="smoking_status" name="smoking_status">
+            <option value="never smoked">Never Smoked</option>
+            <option value="formerly smoked">Formerly Smoked</option>
+            <option value="smokes">Smokes</option>
+        </select><br>
+        
+        <button type="submit">Predict Stroke Risk</button>
+    </form>
+
+    <h1>Diabetes Risk Prediction</h1>
+    <form action="/predict_diabetes" method="post">
+        <label for="FFPG">Final Fasting Plasma Glucose (FFPG):</label>
+        <input type="text" id="FFPG" name="FFPG"><br>
+        <label for="FPG">Fasting Plasma Glucose (FPG):</label>
+        <input type="text" id="FPG" name="FPG"><br>
+        <label for="Age">Age:</label>
+        <input type="text" id="Age" name="Age"><br>
+        <label for="HDL">High-Density Lipoprotein (HDL):</label>
+        <input type="text" id="HDL" name="HDL"><br>
+        <label for="LDL">Low-Density Lipoprotein (LDL):</label>
+        <input type="text" id="LDL" name="LDL"><br>
+        <label for="SBP">Systolic Blood Pressure (SBP):</label>
+        <input type="text" id="SBP" name="SBP"><br>
+        <button type="submit">Predict Diabetes Risk</button>
+    </form>
+
+    <h1>Heart Disease Risk Prediction</h1>
+    <form action="/predict_heart_disease" method="post">
+        <label for="age">age:</label>
+        <input type="text" id="age" name="age"><br>
+        <label for="troponin">troponin:</label>
+        <input type="text" id="troponin" name="troponin"><br>
+        
+        <label for="kcm">kcm:</label>
+        <input type="text" id="kcm" name="kcm"><br>
+        <label for="glucose">glucose:</label>
+        <input type="text" id="glucose" name="glucose"><br>
+
+        <label for="pressureheight">pressureheight:</label>
+        <input type="text" id="pressureheight" name="pressureheight"><br>
+        <label for="presurelow">presurelow:</label>
+        <input type="text" id="presurelow" name="presurelow"><br>
+        <button type="submit">Predict Heart Disease Risk</button>
+    </form>
+</body>
+</html>
