@@ -1,0 +1,81 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id                  Int                   @id @default(autoincrement())
+  name                String                @db.VarChar(255)
+  email               String                @unique @db.VarChar(255)
+  password            String                @db.VarChar(255)
+  refresh_token       String?               @db.Text 
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  diabetesPrediction  DiabetesPrediction[]
+  heartPrediction     HeartDiseasePrediction[]
+  strokePrediction    StrokePrediction[]
+
+  @@map("users")
+}
+
+model DiabetesPrediction {
+  id                  Int           @id @default(autoincrement())
+  users               Users         @relation(fields: [idUser], references: [id])
+  idUser              Int
+  ffpg                Float?
+  fpg                 Float?
+  age                 Int?
+  hdl                 Float?
+  ldl                 Float?
+  sbp                 Float?
+  diabetes_risk       Float?
+  label               String?       @db.VarChar(255)
+  suggestion          String?       @db.VarChar(255)
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  @@map("diabetesprediction")
+}
+
+model HeartDiseasePrediction {
+  id                      Int           @id @default(autoincrement())
+  users                   Users         @relation(fields: [idUser], references: [id])
+  idUser                  Int
+  age                     Int?
+  troponin                Float?
+  kcm                     Float?
+  glucose                 Int?
+  pressureheight          Int?
+  presurelow              Int?
+  heart_disease_risk      Float?
+  label                   String?       @db.VarChar(255)
+  suggestion              String?       @db.VarChar(255)
+  createdAt               DateTime      @default(now())
+  updatedAt               DateTime      @updatedAt
+
+  @@map("heartdiseaseprediction")
+}
+
+model StrokePrediction {
+  id                  Int           @id @default(autoincrement())
+  users               Users         @relation(fields: [idUser], references: [id])
+  idUser              Int
+  age                 Int? 
+  avg_glucose_level   Float?
+  bmi                 Float?
+  hypertension        Int?
+  heart_disease       Int?
+  smoking_status      Int?
+  label               String?       @db.VarChar(255)
+  stroke_risk         Float?
+  suggestion          String?       @db.VarChar(255)
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  @@map("strokeprediction")
+}
